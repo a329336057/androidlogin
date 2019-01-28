@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements DemoView {
     private MyAdapter myAdapter;
 
     private DemoPresenterImpl demoPresenter;
-
+ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
