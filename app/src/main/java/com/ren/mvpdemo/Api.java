@@ -7,7 +7,10 @@ import com.ren.mvpdemo.bean.UserBean;
 import com.ren.mvpdemo.bean.newsBean;
 import com.ren.mvpdemo.bean.sfzBean;
 
+import java.util.logging.Handler;
+
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -26,7 +29,7 @@ public interface Api {
     Observable<newsBean> getnews(@Query("username")String username,@Query("password")String password);
 
     @GET("l")
-    Observable<UserBean> getlogin(@Query("username")String username,@Query("password")String password );
+    Observable<UserBean> getlogin(@Query("username")String username, @Query("password")String password);
 
 
 }

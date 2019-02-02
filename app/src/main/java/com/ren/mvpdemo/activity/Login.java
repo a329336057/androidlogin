@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity implements DemoView {
     @Override
     public void loginBean(UserBean bean) {
             bean=bean;
-            Toast.makeText(this,bean.getMessage()+bean.getCode()+bean.getReslut().getPassword()+bean.getReslut().getUsername(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,bean.getMessage(),Toast.LENGTH_SHORT).show();
             s=bean.getMessage();
             t.setText(s);
     }

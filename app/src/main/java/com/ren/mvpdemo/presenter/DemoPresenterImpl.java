@@ -9,6 +9,8 @@ import com.ren.mvpdemo.bean.sfzBean;
 import com.ren.mvpdemo.model.DemoModelImpl;
 import com.ren.mvpdemo.view.DemoView;
 
+import javax.xml.transform.Result;
+
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -97,6 +99,9 @@ public class DemoPresenterImpl implements DemoPresenter {
                     public void onNext(UserBean userBean) {
                         userBean=userBean;
                         demoView.loginBean(userBean);
+                        if(userBean.getReslut()==null){
+
+                        }
                     }
 
 
