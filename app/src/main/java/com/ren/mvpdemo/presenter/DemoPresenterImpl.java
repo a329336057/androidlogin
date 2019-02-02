@@ -1,7 +1,11 @@
 package com.ren.mvpdemo.presenter;
 
+import android.util.Log;
+
 import com.ren.mvpdemo.bean.Bean;
+import com.ren.mvpdemo.bean.UserBean;
 import com.ren.mvpdemo.bean.newsBean;
+import com.ren.mvpdemo.bean.sfzBean;
 import com.ren.mvpdemo.model.DemoModelImpl;
 import com.ren.mvpdemo.view.DemoView;
 
@@ -37,7 +41,7 @@ public class DemoPresenterImpl implements DemoPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        demoView.getDataFailed();   
+                        demoView.getDataFailed(e);
                     }
 
                     @Override
@@ -61,13 +65,41 @@ public class DemoPresenterImpl implements DemoPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        demoView.getDataFailed();
+                        demoView.getDataFailed(e);
                     }
 
                     @Override
                     public void onNext(newsBean bean) {
                         demoView.getDatanews(bean);
                     }
+                });
+    }
+
+    @Override
+    public void getlogin(String baseUrl, String username, String password) {
+        demoModel.getlogins(baseUrl,username,password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<UserBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+                        demoView.getDataFailed(e);
+
+                    }
+
+                    @Override
+                    public void onNext(UserBean userBean) {
+                        userBean=userBean;
+                        demoView.loginBean(userBean);
+                    }
+
+
                 });
     }
 

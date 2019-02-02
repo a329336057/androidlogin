@@ -1,5 +1,6 @@
 package com.ren.mvpdemo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +10,10 @@ import android.widget.Toast;
 
 import com.ren.mvpdemo.R;
 import com.ren.mvpdemo.Unitle.LoadingFrame;
+import com.ren.mvpdemo.adapter.HTTP;
 import com.ren.mvpdemo.adapter.MyAdapter;
 import com.ren.mvpdemo.bean.Bean;
+import com.ren.mvpdemo.bean.UserBean;
 import com.ren.mvpdemo.bean.newsBean;
 import com.ren.mvpdemo.presenter.DemoPresenterImpl;
 import com.ren.mvpdemo.view.DemoView;
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements DemoView {
     private List<Bean.DataBean> list = new ArrayList<>();
     private List<newsBean.ResultBean.DataBean> l=new ArrayList<>();
     private MyAdapter myAdapter;
-
+    private String s;
     private DemoPresenterImpl demoPresenter;
  
     @Override
@@ -41,20 +44,27 @@ public class MainActivity extends AppCompatActivity implements DemoView {
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                demoPresenter.getnews("http://v.juhe.cn/","3b507c656ea3555b7e8830ef43e72a11","top");
+                demoPresenter.getnews(HTTP.ADDRESS,"apdr","asda");
             }
         });
+
+
+
+
         myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(MainActivity.this, l.get(position).getAuthor_name(), Toast.LENGTH_SHORT).show();
             }
         });
-      
+
         
 
     }
-
+  public void login(View v){
+      Intent i=new Intent(MainActivity.this,Login.class);
+      startActivity(i);
+  }
     @Override
     public void getDataSuccess(Bean bean) {
         list.clear();
@@ -75,8 +85,17 @@ public class MainActivity extends AppCompatActivity implements DemoView {
     }
 
     @Override
-    public void getDataFailed() {
+    public void getDataFailed(Throwable e) {
         l.clear();
         Toast.makeText(this,"failed",Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void loginBean(UserBean userBean) {
+
+    }
+
+
+
+
 }

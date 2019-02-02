@@ -7,4 +7,5 @@ package com.ren.mvpdemo.presenter;
 public interface DemoPresenter {
     void getMyAddress(String baseUrl, String userId);
     void getnews(String baseUrl, String key,String type);
+    void getlogin(String baseUrl,String usernmae,String password);
 }

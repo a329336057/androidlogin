@@ -1,7 +1,9 @@
 package com.ren.mvpdemo;
 
 
+import com.ren.mvpdemo.activity.Login;
 import com.ren.mvpdemo.bean.Bean;
+import com.ren.mvpdemo.bean.UserBean;
 import com.ren.mvpdemo.bean.newsBean;
 import com.ren.mvpdemo.bean.sfzBean;
 
@@ -18,9 +20,13 @@ public interface Api {
     @GET("userInfo/myAddress.json")
     Observable<Bean> getMyAddress(@Query("userId") String userId );
 
-    @GET("idcard/index")
-    Observable<sfzBean> getsfz(@Query("userId") String userId,@Query("key")String key);
+
     
-    @GET("toutiao/index")
-    Observable<newsBean> getnews(@Query("type") String type,@Query("key")String key );
+    @GET("login")
+    Observable<newsBean> getnews(@Query("username")String username,@Query("password")String password);
+
+    @GET("l")
+    Observable<UserBean> getlogin(@Query("username")String username,@Query("password")String password );
+
+
 }
